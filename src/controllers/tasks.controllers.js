@@ -7,7 +7,7 @@ const TasksServices = require("../services/tasks.services");
 const getAllTasks = async (req, res) => {
   try {
     const tasks = await TasksServices.getAll(); // devolver un archivo json
-    res.send(tasks);
+    res.send(tasks); // --> envia directamente la respuesta
   } catch (error) {
     console.log(error);
   }
@@ -28,9 +28,10 @@ const updateTask = async (req, res) => {
   try {
     const updatedTask = req.body; // { status: true / false }
     // son un objeto --> haces destructuring de un objeto
+    console.log(updatedTask);
     const { id } = req.params;
-    const result = await TasksServices.update(updatedTask, id);
-    res.json(result);
+    const result = await TasksServices.update(updatedTask, Number(id));
+    res.send(result);
   } catch (error) {
     console.log(error);
   }

@@ -13,7 +13,7 @@ const {
 
 const router = express.Router();
 
-router.get("/tasks", getAllTasks);
+router.get("/tasks", getAllTasks); // controladores
 
 router.post("/tasks", createTask);
 
